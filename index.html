@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A modern calculator built with HTML, CSS and JavaScript.">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- ===== Calculator ===== -->
+    <section class="calculator" aria-label="Calculator">
+      <header class="calc-header">
+        <h1>Calculator</h1>
+
+        <div class="header-actions">
+          <button id="history-toggle" class="icon-btn" type="button"
+                  aria-label="Open history"
+                  aria-expanded="false"
+                  aria-controls="history-panel">
+            <span class="icon" aria-hidden="true">🕘</span>
+          </button>
+
+          <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to dark theme">
+            <span class="icon" aria-hidden="true">🌙</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="display" role="group" aria-label="Display">
+        <div id="expression" class="expression" aria-hidden="true"></div>
+        <output id="result" class="result" aria-live="polite">0</output>
+      </div>
+
+      <div class="keypad" role="group" aria-label="Calculator keys">
+        <button type="button" class="btn btn-clear" data-action="clear" data-key="Escape" aria-label="Clear all">AC</button>
+        <button type="button" class="btn btn-clear" data-action="delete" data-key="Backspace" aria-label="Delete last character">⌫</button>
+        <button type="button" class="btn btn-op" data-action="operator" data-value="/" data-key="/" aria-label="Divide">÷</button>
+        <button type="button" class="btn btn-op" data-action="operator" data-value="*" data-key="*" aria-label="Multiply">×</button>
+
+        <button type="button" class="btn btn-num" data-action="digit" data-value="7" data-key="7" aria-label="7">7</button>
+        <button type="button" class="btn btn-num" data-action="digit" data-value="8" data-key="8" aria-label="8">8</button>
+        <button type="button" class="btn btn-num" data-action="digit" data-value="9" data-key="9" aria-label="9">9</button>
+        <button type="button" class="btn btn-op" data-action="operator" data-value="-" data-key="-" aria-label="Subtract">−</button>
+
+        <button type="button" class="btn btn-num" data-action="digit" data-value="4" data-key="4" aria-label="4">4</button>
+        <button type="button" class="btn btn-num" data-action="digit" data-value="5" data-key="5" aria-label="5">5</button>
+        <button type="button" class="btn btn-num" data-action="digit" data-value="6" data-key="6" aria-label="6">6</button>
+        <button type="button" class="btn btn-op" data-action="operator" data-value="+" data-key="+" aria-label="Add">+</button>
+
+        <button type="button" class="btn btn-num" data-action="digit" data-value="1" data-key="1" aria-label="1">1</button>
+        <button type="button" class="btn btn-num" data-action="digit" data-value="2" data-key="2" aria-label="2">2</button>
+        <button type="button" class="btn btn-num" data-action="digit" data-value="3" data-key="3" aria-label="3">3</button>
+        <button type="button" class="btn btn-eq" data-action="equals" data-key="Enter" aria-label="Equals">=</button>
+
+        <button type="button" class="btn btn-num btn-zero" data-action="digit" data-value="0" data-key="0" aria-label="0">0</button>
+        <button type="button" class="btn btn-num" data-action="decimal" data-key="." aria-label="Decimal point">.</button>
+      </div>
+
+      <p class="hint">Keyboard: 0-9 . + − * / &nbsp;|&nbsp; Enter = &nbsp;|&nbsp; Backspace ⌫ &nbsp;|&nbsp; Esc AC</p>
+    </section>
+
+  </main>
+
+  <!-- ===== History panel ===== -->
+  <div id="history-overlay" class="history-overlay" hidden></div>
+
+  <aside id="history-panel" class="history-panel" aria-label="Calculation history" aria-hidden="true">
+    <div class="history-head">
+      <h2>History</h2>
+
+      <button id="close-history" class="icon-btn" type="button" aria-label="Close history">
+        <span class="icon" aria-hidden="true">✕</span>
+      </button>
+    </div>
+
+    <div class="history-body">
+      <ul id="history-list" class="history-list"></ul>
+      <p id="history-empty" class="history-empty">No calculations yet.</p>
+    </div>
+
+    <div class="history-footer">
+      <button id="clear-history" class="link-btn" type="button">Clear history</button>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
